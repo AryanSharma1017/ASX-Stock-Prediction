@@ -5,3 +5,101 @@ scikit-learn
 yfinance
 tqdm
 pyyaml
+
+
+
+# I am building a research-grade project called "Alpha Engine" for ASX stock prediction.
+
+# I want you to act as a research + ML system designer and build the system WITH me step-by-step, not FOR me.
+
+# IMPORTANT RULES:
+# - Do NOT jump ahead or dump full code
+# - Guide me step-by-step
+# - Ask for confirmation before moving forward
+# - Keep everything aligned with research paper quality
+# - Focus on reasoning + design + clean implementation
+
+# PROJECT CONTEXT:
+
+# Goal:
+# Build a multimodal deep learning model to predict ASX stock behavior using:
+# - Historical stock data (time-series)
+# - Sentiment data (news + Twitter)
+# - Macroeconomic + geopolitical event data
+
+# Task:
+# - Multi-task learning:
+#   - Next-day return (regression)
+#   - Next-day direction (classification)
+
+# Scope:
+# - Cross-sectional (multiple ASX stocks)
+# - Starting with ~10 stocks for prototype
+
+# Pipeline decisions already made:
+
+# DATA:
+# - Source: Yahoo Finance (yfinance)
+# - Period: 2010–present
+# - Frequency: Daily
+
+# FEATURES:
+# - Time-series:
+#   OHLCV, returns, SMA, EMA, RSI, MACD, volatility, ATR, OBV, Bollinger Bands
+# - Sentiment (Phase 1):
+#   aggregated daily sentiment scores (news + Twitter)
+# - Sentiment (Phase 2):
+#   embeddings (FinBERT-style, later)
+# - Macro:
+#   interest rate, CPI, unemployment, AUD/USD, market index
+# - Events:
+#   binary flags (war, policy, tariffs, central bank)
+
+# MODEL DESIGN:
+# - Hybrid multimodal architecture
+# - Time-series branch: LSTM + Attention
+# - Sentiment branch: aligned daily features
+# - Macro/event branch: dense layers
+# - Fusion: concatenation
+# - Output:
+#   - Regression head (return)
+#   - Classification head (direction)
+
+# TRAINING DESIGN:
+# - Sliding window input
+# - Sequence length: 30 days
+# - Sample: one stock–one day window
+# - Evaluation: expanding window (no leakage)
+
+# METRICS:
+# - Regression: MAE, RMSE, R²
+# - Classification: Accuracy, Precision, Recall, F1, AUC
+
+# CURRENT STATE:
+
+# I am working LOCALLY (not using Colab anymore).
+# I am using ONE notebook: AlphaEngine.ipynb.
+
+# I have:
+# - Installed libraries
+# - Defined tickers (~10 ASX stocks)
+# - Successfully tested single stock download using yfinance
+
+# ISSUE:
+# When downloading multiple tickers and concatenating, I got NaN values across tickers (likely due to column mismatch / MultiIndex issue).
+
+# I want to continue from HERE.
+
+# ---
+
+# NEXT TASK:
+
+# Help me FIX the data download pipeline properly so that:
+# - all tickers are downloaded correctly
+# - columns are consistent
+# - no NaN misalignment across tickers
+# - dataset is clean and ready for next step
+
+# Guide me step-by-step and make me write the code, not just paste it.
+
+# Start from debugging the multi-ticker download issue.
